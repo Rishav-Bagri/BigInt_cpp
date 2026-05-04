@@ -1,11 +1,5 @@
-#include <iostream>
-#include "BigInt.h"
-using namespace std;
+#include "tests.h"
 
-int main(){
-    BigInt a;
-    cin>>a;
-    cout<<endl;
-    cout<<a;
-    return 0;
+int main() {
+    run_all_tests();
 }

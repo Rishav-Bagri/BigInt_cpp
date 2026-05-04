@@ -26,6 +26,20 @@ public:
     friend istream& operator>>(istream& in, BigInt& num);
     friend ostream& operator<<(ostream& out,const BigInt& num);
 
+
+    // have to remove it and replace it with == operator
+    string toString() const {
+        if (digits.empty()) return "0";
+
+        string result = to_string(digits.back());
+
+        for (int i = digits.size() - 2; i >= 0; i--) {
+            string part = to_string(digits[i]);
+            result += string(9 - part.length(), '0') + part;
+        }
+
+        return result;
+    }
 };
 
 istream& operator>>(istream& in, BigInt& num) {
@@ -39,7 +53,7 @@ ostream& operator<<(ostream& out,const BigInt& num) {
         out << 0;
         return out;
     }
-    
+
     out << num.digits.back();
 
     for (int i = num.digits.size() - 2; i >= 0; i--) {
